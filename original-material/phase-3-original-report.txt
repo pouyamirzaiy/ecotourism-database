@@ -1,0 +1,269 @@
+Phase3  
+pouya mirzaei 
+400222104 
+Ecotourism Database Report 
+Database Design: 
+• Describing the entities in the database and their attributes: 
+1. Tourist: The primary key is the ID which uniquely identifies each tourist. 
+The attributes include Name, Age, Contact Information, Nationality, Travel 
+History, and Preferences. These attributes provide necessary information 
+about the tourist that would be needed for making a reservation and can 
+help in personalizing their experience. 
+2. Guide: The primary key is the ID which uniquely identifies each guide. The 
+attributes like Name, Languages Spoken, Special Skills, and Ratings help 
+tourists to choose a guide that fits their requirements and preferences. 
+3. Destination: The primary key is the ID which uniquely identifies each 
+destination. Attributes like Name, Location, Climate, and Description 
+provide tourists with necessary information to choose their preferred 
+destination. 
+4. Activity: The primary key is the ID which uniquely identifies each activity. 
+The attributes like Name, Description, Duration, Difficulty Level, Best Time 
+to Visit, and Local Cuisine provide tourists with necessary information to 
+choose activities that suit their interests and abilities. 
+5. Accommodation: The primary key is the ID which uniquely identifies each 
+accommodation. The attributes like Name, Type, Location, Price Range, 
+Equipment Needed, and Age Limit provide tourists with necessary 
+information to choose accommodations that suit their budget and needs. 
+6. Transportation: The primary key is the ID which uniquely identifies each 
+mode of transportation. Attributes like Type, Schedule, Price, Capacity, and 
+Accessibility provide tourists with necessary information to choose a 
+mode of transportation that suits their schedule and needs. 
+7. Reservation (weak entity): The primary key is the Reservation ID which 
+uniquely identifies each reservation. The attributes provide all the 
+necessary details about the reservation. The Tourist ID, Activity 
+ID, Accommodation ID, and Transportation ID are foreign keys that link to 
+the respective entities, establishing relationships between them. 
+Entity Relationships and Quantities: 
+• Tourist-Activity: A tourist can engage in multiple activities, and likewise, an 
+activity can be participated in by multiple tourists. 
+• Tourist-Guide: Each tourist can be guided by a single guide, but a guide can cater 
+to multiple tourists. 
+• Tourist-Accommodation: A tourist can stay in one accommodation, but an 
+accommodation can host multiple tourists. 
+• Tourist-Transportation: A tourist can use one type of transportation, but a single 
+mode of transportation can serve multiple tourists. 
+• Guide-Destination: A guide can be familiar with multiple destinations, and a 
+destination can be served by multiple guides. 
+• Activity-Destination: An activity can take place in multiple destinations, and a 
+destination can offer multiple activities. 
+• Activity-Guide: An activity can be conducted by multiple guides, and a guide can 
+conduct multiple activities. 
+• Guide-Accommodation: A guide can recommend many accommodations, and an 
+accommodation can be recommended by many guides. 
+• Tourist-Destination: A tourist can visit many destinations, and a destination can 
+be visited by many tourists. 
+• Accommodation-Destination: An accommodation can be located in one 
+destination, but a destination can have many accommodations. 
+• Transportation-Destination: A mode of transportation can serve many 
+destinations, and a destination can be reached by many modes of transportation. 
+• Guide-Transportation: A guide can utilize many modes of transportation, and a 
+mode of transportation can be used by many guides. 
+constraints:  
+Tourist:  
+• Name must be alphanumeric and cannot contain special characters.  
+• Age must be a positive integer.  
+• Contact information must be a valid email address and phone number.  
+• Nationality must be a valid country name.  
+• Travel history must be a comma-separated list of countries or cities.  
+• Preferences must be a comma-separated list of activities, food, and 
+accommodation types.  
+Guide:  
+• Name must be alphanumeric and cannot contain special characters.  
+• Languages spoken must be a comma-separated list of language names.  
+• Special skills must be a comma-separated list of skills.  
+• Ratings must be a floating-point number between 0 and 5.  
+Destination:  
+• Name must be alphanumeric and cannot contain special characters.  
+• Location must be a valid geographical location.  
+• Climate must be a valid climate type.  
+• Description must be a text string describing the destination.  
+Activity:  
+• Name must be alphanumeric and cannot contain special characters.  
+• Description must be a text string describing the activity.  
+• Duration must be a positive integer representing the number of hours or 
+days the activity takes. 
+• Difficulty level must be one of 'Easy', 'Moderate', or 'Challenging'.  
+• Best time to visit must be a valid time of the year.  
+• Local cuisine must be a comma-separated list of local food specialties.  
+Accommodation:  
+• Name must be alphanumeric and cannot contain special characters.  
+• Type must be one of 'Hotel', 'Hostel', 'Camping Site', or 'Other'.  
+• Location must be a valid geographical location.  
+• Price range must be a floating-point number representing the average cost 
+per night.  
+• Equipment needed must be a comma-separated list of equipment required 
+for the activity.  
+• Age limit must be a positive integer representing the minimum or maximum 
+age requirement for the activity.  
+Transportation:  
+• Type must be one of 'Bus', 'Train', 'Plane', or 'Other'.  
+• Schedule must be a text string describing the transportation schedule.  
+• Price must be a floating-point number representing the cost of the 
+transportation.  
+• Capacity must be a positive integer representing the maximum number of 
+people the transportation can accommodate.  
+• Accessibility must be a text string describing the accessibility features of the 
+transportation.  
+Reservation:  
+• Reservation ID must be a unique identifier for each reservation.  
+• Tourist ID must be a reference to a valid tourist in the Tourist table.  
+• Activity ID must be a reference to a valid activity in the Activity table.  
+• Accommodation ID must be a reference to a valid accommodation in the 
+Accommodation table. Transportation ID must be a reference to a valid 
+transportation in the Transportation table.  
+• Reservation date must be a valid date. Status must be one of 'Confirmed', 
+'Pending', or 'Cancelled'. 
+• Payment status must be one of 'Paid' or 'Unpaid'.  
+• Total cost must be a floating-point number representing the total cost of the 
+reservation.  
+• Special requests must be a text string describing any special requests made 
+by the tourist.  
+• Check-in date must be a valid date.  
+• Check-out date must be a valid date after the check-in date.  
+Entity-Relationship Diagram: 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+UML: 
+• . 
+SQL Queries: 
+Create the database and tables: 
+CREATE DATABASE ecotourism; 
+USE ecotourism; 
+CREATE TABLE Tourist ( 
+Tourist_ID INT NOT NULL AUTO_INCREMENT, 
+Name VARCHAR(255) NOT NULL, 
+Age INT NOT NULL, 
+Contact_Information VARCHAR(255) NOT NULL, 
+Nationality VARCHAR(255) NOT NULL, 
+Travel_History VARCHAR(255), 
+Preferences VARCHAR(255), 
+PRIMARY KEY (Tourist_ID) 
+); 
+CREATE TABLE Guide ( 
+Guide_ID INT NOT NULL AUTO_INCREMENT, 
+Name VARCHAR(255) NOT NULL, 
+Languages_Spoken VARCHAR(255), 
+Special_Skills VARCHAR(255), 
+Ratings FLOAT, 
+PRIMARY KEY (Guide_ID) 
+); 
+CREATE TABLE Destination ( 
+Destination_ID INT NOT NULL AUTO_INCREMENT, 
+Name VARCHAR(255) NOT NULL, 
+Location VARCHAR(255) NOT NULL, 
+Climate VARCHAR(255), 
+Description VARCHAR(255), 
+PRIMARY KEY (Destination_ID) 
+); 
+CREATE TABLE Activity ( 
+Activity_ID INT NOT NULL AUTO_INCREMENT, 
+Name VARCHAR(255) NOT NULL, 
+Description VARCHAR(255), 
+Duration INT NOT NULL, 
+Difficulty_Level VARCHAR(255) NOT NULL, 
+Best_Time_to_Visit VARCHAR(255), 
+Local_Cuisine VARCHAR(255), 
+PRIMARY KEY (Activity_ID) 
+); 
+CREATE TABLE Accommodation ( 
+Accommodation_ID INT NOT NULL AUTO_INCREMENT, 
+Name VARCHAR(255) NOT NULL, 
+Type VARCHAR(255) NOT NULL, 
+Location VARCHAR(255) NOT NULL, 
+Price_Range FLOAT NOT NULL, 
+Equipment_Needed VARCHAR(255), 
+Age_Limit INT, 
+PRIMARY KEY (Accommodation_ID) 
+); 
+CREATE TABLE Transportation ( 
+Transportation_ID INT NOT NULL AUTO_INCREMENT, 
+Type VARCHAR(255) NOT NULL, 
+Schedule VARCHAR(255), 
+Price FLOAT NOT NULL, 
+Capacity INT NOT NULL, 
+Accessibility VARCHAR(255), 
+PRIMARY KEY (Transportation_ID) 
+); 
+CREATE TABLE Reservation ( 
+Reservation_ID INT NOT NULL AUTO_INCREMENT, 
+Tourist_ID INT NOT NULL, 
+Activity_ID INT NOT NULL, 
+Accommodation_ID INT NOT NULL, 
+Transportation_ID INT NOT NULL, 
+Reservation_Date DATE NOT NULL, 
+Status VARCHAR(255) NOT NULL, 
+Payment_Status VARCHAR(255) NOT NULL, 
+Total_Cost FLOAT NOT NULL, 
+Special_Requests VARCHAR(255), 
+Check_in_Date DATE NOT NULL, 
+Check_out_Date DATE NOT NULL, 
+PRIMARY KEY (Reservation_ID), 
+FOREIGN KEY (Tourist_ID) REFERENCES Tourist(Tourist_ID), 
+FOREIGN KEY (Activity_ID) REFERENCES Activity(Activity_ID), 
+FOREIGN KEY (Accommodation_ID) REFERENCES 
+Accommodation(Accommodation_ID), 
+FOREIGN KEY (Transportation_ID) REFERENCES Transportation(Transportation_ID) 
+); 
+Set the foreign key constraints: 
+ALTER TABLE Reservation 
+ADD CONSTRAINT fk_tourist_id FOREIGN KEY (Tourist_ID) REFERENCES 
+Tourist(Tourist_ID); 
+ALTER TABLE Reservation 
+ADD CONSTRAINT fk_activity_id FOREIGN KEY (Activity_ID) REFERENCES 
+Activity(Activity_ID); 
+ALTER TABLE Reservation 
+ADD CONSTRAINT fk_accommodation_id FOREIGN KEY (Accommodation_ID) 
+REFERENCES Accommodation(Accommodation_ID); 
+ALTER TABLE Reservation 
+ADD CONSTRAINT fk_transportation_id FOREIGN KEY (Transportation_ID) REFERENCES 
+Transportation(Transportation_ID); 
+This SQL script is used to create a database for an ecotourism 
+application. Here’s what each part of the script does: 
+1. CREATE DATABASE ecotourism; - This line creates a 
+new database named ecotourism. 
+2. USE ecotourism; - This line sets ecotourism as the 
+current database for subsequent SQL commands. 
+3. The CREATE TABLE commands create tables in 
+the ecotourism database. Each table corresponds to an 
+entity in your application (Tourist, Guide, Destination, 
+Activity, Accommodation, Transportation, Reservation). The 
+parameters in parentheses define the attributes of each 
+entity and their data types. For example, Tourist_ID INT 
+NOT NULL AUTO_INCREMENT creates an 
+attribute Tourist_ID of type INT (integer), which cannot be 
+NULL and will auto-increment with each new record. 
+4. PRIMARY KEY is used to define the primary key for each 
+table. A primary key is a unique identifier for each record in a 
+table. 
+5. In the Reservation table, FOREIGN KEY is used to define 
+foreign keys. A foreign key is a field (or collection of fields) 
+in one table, that refers to the primary key in another table. 
+The table containing the foreign key is called the child table, 
+and the table containing the primary key is called the 
+referenced or parent table. This establishes a link between 
+the data in two tables and allows for the cross-referencing of 
+tables. 
+6. The ALTER TABLE commands add foreign key constraints 
+to the Reservation table. This ensures the integrity of the 
+data by making sure that the value in the foreign key column 
+corresponds to an existing value in the primary key of the 
+referenced table. 
+In summary, this script sets up the structure of our ecotourism 
+database by creating tables for each entity and defining the 
+relationships between them. It ensures the integrity of our data by 
+enforcing primary key and foreign key constraints.  
+Conclusion: 
+This documentation provides a more detailed explanation of 
+the entities, attributes, relationships, and constraints in the 
+ecotourism database. It includes information on the limitations 
+and conditions for each field, making it a more valuable 
+resource for understanding the structure and content of the 
+database. 

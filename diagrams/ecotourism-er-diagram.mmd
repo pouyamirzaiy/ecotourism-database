@@ -1,0 +1,24 @@
+erDiagram
+    GUIDE ||--o{ TOURIST : assigned_to
+    DESTINATION ||--o{ ACCOMMODATION : contains
+    TOURIST ||--o{ RESERVATION : makes
+    ACTIVITY ||--o{ RESERVATION : selected_for
+    ACCOMMODATION ||--o{ RESERVATION : selected_for
+    TRANSPORTATION ||--o{ RESERVATION : selected_for
+
+    TOURIST ||--o{ TOURIST_ACTIVITY : participates
+    ACTIVITY ||--o{ TOURIST_ACTIVITY : has_participants
+    TOURIST ||--o{ TOURIST_DESTINATION : visits
+    DESTINATION ||--o{ TOURIST_DESTINATION : visited_by
+    GUIDE ||--o{ GUIDE_DESTINATION : serves
+    DESTINATION ||--o{ GUIDE_DESTINATION : has_guides
+    ACTIVITY ||--o{ ACTIVITY_DESTINATION : offered_at
+    DESTINATION ||--o{ ACTIVITY_DESTINATION : offers
+    ACTIVITY ||--o{ ACTIVITY_GUIDE : conducted_by
+    GUIDE ||--o{ ACTIVITY_GUIDE : conducts
+    GUIDE ||--o{ GUIDE_ACCOMMODATION : recommends
+    ACCOMMODATION ||--o{ GUIDE_ACCOMMODATION : recommended_by
+    TRANSPORTATION ||--o{ TRANSPORTATION_DESTINATION : serves
+    DESTINATION ||--o{ TRANSPORTATION_DESTINATION : reachable_by
+    GUIDE ||--o{ GUIDE_TRANSPORTATION : uses
+    TRANSPORTATION ||--o{ GUIDE_TRANSPORTATION : used_by
